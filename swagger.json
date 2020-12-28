@@ -1,0 +1,73 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "Getir",
+      "description": "Record Getir",
+      "version": "0.1.0"
+    },
+    "tags": [
+      {
+        "name": "Record",
+        "description": "Recort Operation"
+      }
+
+    ],
+    "paths": {
+      "/records":{
+
+        "post":{
+          "tags": ["Record"],
+          "summary": "Fetch records according to given filters",
+          "operationId": "fetchRecords",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "startDate": { "type": "date","required":true, "example":"2020-12-13"},
+                    "endDate": { "type": "date","required":true, "example":"2020-12-13"},
+                    "minCount": { "type": "number","required":true,"example":123 },
+                    "maxCount": { "type": "number","required":true,"example":1200}
+                    
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                        "code": { "type": "number", "example": 0 },
+                        "msg":{ "type": "string", "example": "Successful" },
+                        "records":{
+                            "type":"array",
+                            "items":{
+                              "type": "object",
+                              "properties": {
+                                "key": { "type": "string" },
+                                "createdAt": { "type": "date","example":"2020-12-13" },
+                                "totalCount": { "type": "number" }
+
+                              }
+                            }
+                          }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+                "code": "number",
+                "msg": "string"
+            }
+          }
+    
+        }
+      }
+    }
+  }
