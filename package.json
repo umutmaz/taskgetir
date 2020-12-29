@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test jest --silent --forceExit --detectOpenHandles"
   },
   "repository": {
     "type": "git",
@@ -22,10 +22,22 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "jest": "^26.6.3",
     "mongodb": "^3.6.3",
     "nodemon": "^2.0.6",
     "swagger-ui-express": "^4.1.6",
     "validate-date": "^2.0.0"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "jest-extended": "^0.11.5",
+    "node-mocks-http": "^1.9.0",
+    "supertest": "^6.0.1"
+  },
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules"
+    ]
   }
 }

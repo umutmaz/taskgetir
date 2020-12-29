@@ -27,13 +27,6 @@ const bodyValidator = (req,res,next)=>{
         })
         return null;
     }
-    if(new Date(endDate)<new Date(startDate)){
-        res.status(400).send({
-            code: 1,
-            msg: `end date is less than end date`
-        })
-        return null;
-    }
     if(!(Number.isInteger(minCount) && Number.isInteger(maxCount))){
         res.status(400).send({
             code: 1,
@@ -50,13 +43,7 @@ const bodyValidator = (req,res,next)=>{
         return null;
 
     }
-    if(Number(minCount)>Number(maxCount)){
-        res.status(400).send({
-            code: 1,
-            msg: `minCount is more than maxCount`
-        })
-        return null;
-    }
+
 
     next();
 }

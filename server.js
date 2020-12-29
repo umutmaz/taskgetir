@@ -15,6 +15,10 @@ app.use(express.json());
 
 app.use("/records",service)
 app.use("/api", swagger.serve, swagger.setup(swaggerJSON));
+app.get("/test", async (req, res) => {
+    res.json({ message: "pass!" });
+  });
+
 
 db.connect().then(()=>{
     app.listen(port, () => {
@@ -22,3 +26,4 @@ db.connect().then(()=>{
     });
 })
 
+module.exports = app;
